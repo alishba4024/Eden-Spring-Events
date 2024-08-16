@@ -58,6 +58,7 @@ const marqueeElement = document.getElementById('dynamicMarquee');
   
   // Initial update when the page loads
   updateMarquee();
+  
 
 
 
