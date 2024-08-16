@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden Spring Events-About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+    rel="stylesheet">
+</head>
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Spartan", sans-serif;
+    
+}
+.about-us{
+    display: flex;
+}
+body{
+    background: white;
+    /* overflow: hidden; */
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar{
+ display: block;
+ overflow-x: hidden; /* Hide horizontal scrollbar */
+ overflow-y: auto;  /* Allow vertical scrollbar if needed */
+ width: 8px;
+ background:black;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: #800020;
+    border-radius: 50px;
+    cursor: grab;
+}
+
+     /* HEADER NAVBAR STYLING */
+
+     header{
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    background: black;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 1s;
+    z-index: 1300;
+    width: 100%;
+    height: 15vh;
+   
+}
+
+.nav{
+    display: flex;
+}
+.nav li {
+ list-style: none;
+ margin: 0 20px;
+}
+.nav li a {
+    color: #f5f5DC;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.nav li a.active{
+    color: #f5f5DC;
+    border:0.2em solid  #f5f5DC ;
+    max-width: 10em;
+    margin: auto auto;
+    padding: 7px;
+}
+
+.sparkle {
+    max-width: 10em; 
+    color: #f5f5DC;
+    margin: auto auto;
+}
+
+.sparkle:hover {
+    cursor: pointer;
+}
+
+.hover-effect {
+    box-sizing: border-box;
+    position: relative;
+    padding: 0.75em;
+}
+
+.hover-effect::before,
+.hover-effect::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+}
+
+.hover-effect::before {
+    border-top: 0.2em solid  #800020;
+    border-bottom: 0.2em solid  #800020;
+    transform: scale3d(0, 1, 1);
+}
+
+.hover-effect::after {
+    border-left: 0.2em solid  #800020;
+    border-right: 0.2em solid  #800020;
+    transform: scale3d(1, 0, 1);
+}
+
+.hover-effect:hover::before,
+.hover-effect:hover::after {
+    transform: scale3d(1, 1, 1);
+    transition: transform 900ms;
+}
+
+/* Header Styling */
+header {
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 1s;
+    z-index: 1300;
+    width: 100%;
+    height: 15vh;
+}
+
+.navbar-toggler {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #f5f5DC;
+    cursor: pointer;
+    display: none; /* Hidden by default, shown on smaller screens */
+}
+
+/* Navigation Menu */
+.nav {
+    display: flex;
+    list-style: none;
+}
+
+.nav li {
+    margin: 0 20px;
+}
+
+.nav li a {
+    color: #f5f5DC;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.nav li a.active {
+    color: #f5f5DC;
+    border: 0.2em solid #800020;
+    max-width: 10em;
+    margin: auto;
+    padding: 7px;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: black;
+        overflow: hidden;
+        height: 0;
+        transition: height 0.3s ease-in-out;
+    }
+   .image-text-container{
+    position: relative;  /* or position: sticky; top: 0; */
+   }
+    .nav.active {
+        height: auto;
+        padding: 10px;
+    }
+
+    .nav li {
+        margin: 10px 0;
+    }
+
+    .navbar-toggler {
+        display: block; /* Show the hamburger menu on smaller screens */
+    }
+}
+
+
+/* about us styling */
+    .about-us{
+        padding-left: 250px;
+        padding-right: 250px;
+        padding-top: 140px;
+        display: grid;
+    }
+    a.sites{
+    color: black;
+    text-decoration: underline 1px solid #800020 ;
+    position: relative;
+    text-decoration: none; /* Remove default underline */
+    }
+    a.sites::after{
+  content: '';
+  position: absolute;
+  width: 100%; /* Full underline */
+  height: 2px;
+  background-color: #7e2a3fb0; /* Underline color */
+  bottom: -5px; /* Adjust for desired spacing */
+  left: 0;
+    }
+    p{
+    color: black;
+    font-size: large;
+    }
+    h1{
+    
+    color: black
+    }
+    h3{
+        color: black;
+        font-weight: 700;
+        font-size: 20px;
+    }
+    .image-text-container {
+  display: flex; /* Arrange elements horizontally */
+  align-items: center; /* Vertically center elements */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+.image-text-container img {
+  width: 50%; /* Adjust width as needed */
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+  /* About Us Responsive Adjustments */
+     @media (max-width: 1178px) {
+         .about-us {
+             padding: 20px;
+             margin-top: 150px;
+         }
+     
+         .image-text-container {
+             flex-direction: column;
+         }
+     
+         .image-text-container img {
+             width: 100%;
+         }
+     }
+@media (max-width: 768px) {
+    .about-us {
+        padding: 20px;
+        margin-top: 140px;
+    }
+
+    .image-text-container {
+        flex-direction: column;
+    }
+
+    .image-text-container img {
+        width: 100%;
+    }
+}
+
+      /* FOOTER STYLING */
+    
+      ul {
+    margin: 0px;
+    padding: 0px;
+}
+.footer-section {
+  background: linear-gradient(90deg, #800020, #000000);
+  position: relative;
+}
+.footer-cta {
+  border-bottom: 1px solid #373636;
+}
+.cta-text {
+  padding-left: 15px;
+  display: inline-block;
+}
+.cta-text h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.cta-text span {
+  color: #757575;
+  font-size: 15px;
+}
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+.footer-pattern img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 340px;
+  background-size: cover;
+  background-position: 100% 100%;
+}
+.footer-logo {
+  margin-bottom: 5px;
+}
+.footer-logo img {
+    max-width: 250px;
+}
+.footer-text p {
+  margin-bottom: 10px;
+  font-size: 14px;
+   color: #f5f5DC;
+  line-height: 28px;
+}
+
+.footer-widget-heading h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  position: relative;
+}
+.footer-widget-heading h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  height: 2px;
+  width: 50px;
+  background: #ff5e14;
+}
+.footer-widget ul li {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  margin-bottom: 12px;
+}
+.footer-widget ul li a:hover{
+  color: #ff5e14;
+
+}
+.footer-widget ul li a {
+  color: #f5f5DC;
+  text-transform: capitalize;
+}
+.subscribe-form {
+  position: relative;
+  overflow: hidden;
+}
+.subscribe-form input {
+  width: 100%;
+  padding: 14px 28px;
+  background: #2e2c2c;
+  border: 1px solid #2e2c2c;
+  color: #fff;
+}
+.subscribe-form button {
+    position: absolute;
+    right: 0;
+    background: #800020;
+    padding: 13px 20px;
+    border: 1px solid #800020;
+    top: 0;
+    color: #F5F5DC;
+    font-weight: 500; 
+}
+.subscribe-form button i {
+  color: #fff;
+  font-size: 22px;
+  transform: rotate(-6deg);
+}
+.copyright-area{
+  background: #202020;
+  padding: 25px 0;
+}
+.copyright-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #878787;
+}
+.footer-menu li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.footer-menu li:hover a{
+  color: #ff5e14;
+}
+.footer-menu li a {
+  font-size: 13px;
+  color: #878787;
+}
+.marquee{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  /* cursor: pointer; */
+}
+.menu{
+  scroll-behavior: auto;
+}
+.social-icon i{
+  color: #F5F5DC;
+  margin-right: 30px;
+  font-size: 20px;
+  transition: all .42s;
+ }
+
+ .social-icon i:hover{
+  transform: scale(1.3);
+ }
+ .end-text{
+  background-color:white;
+  text-align: center;
+  padding: 20px;
+ }
+
+ .end-text p{
+  color: #000;
+  text-transform: capitalize;
+
+ }
+   
+</style>
+<body>
+    <!-- HEADER -->
+    <header>
+      <a href="/index.html"><img src="img/logo.png" width="200px" class="logo" alt=""></a>
+      <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav">
+          <li><a class="nav-btn sparkle hover-effect" href="/index.html">Home</a></li>
+          <li><a class="nav-btn  active" href="/aboutus.html">About</a></li>
+          <li><a class="nav-btn sparkle hover-effect " href="/events.html">Events</a></li>
+          <li><a class="nav-btn sparkle hover-effect" href="#">Services</a></li>
+          <li><a class="nav-btn sparkle hover-effect" href="/bookingUS.html">Booking us</a></li>
+      </ul>
+  </header><br>
+
+    <div class="about-us">
+         <div class="1st-content">
+            <h1>Eden Springs Events—a full-service event planning and design production firm—has become one of the world’s most celebrated and sought-after event companies. </h1><br>
+            <p>As event architects we create one of a kind experiences for discerning private and corporate clients. Founded in 2002 and based in New York City, Eden Springs Events has received national acclaim from top industry publications including vogue, Harper's Bazaar, The Cut, and Brides, among others.
+            </p>
+        </div>
+         <br>
+    
+        <div class="image-text-container">
+            <img src="/img/Aboutcontent-1.jpg" alt="Your company logo">
+            <div class="content-1">
+              <h3>EVENT ARCHITECTS</h3><br>
+              <p>Our team thrives on creating extraordinary, one-of-a-kind weddings and events, and seeing them through to spectacular conclusions. A Fête event is raved about time and again, because every facet of the experience speaks the same language. We are one of the few companies that conceptualizes, designs, plans and oversees all key elements in-house. By not outsourcing, we are able to control quality and ensure a cohesive vision. Our main services are planning, event design and paper product design, however we customize our service offerings to match clients’ needs.
+            </p>
+            </div>
+       </div>
+    
+    <div class="image-text-container">
+        <img src="/img/Aboutcontent-2.jpg" alt="">
+        <div class="content-2">
+            <h3>TAILOR-MADE STORYTELLING</h3><br>
+            <p>Part of our brand DNA is the ability to discover our client's needs. We deep dive into their personalities and wishes. Through this relationship, we discover parts that are unique to them, but we are also able to expose deeper layers that they didn’t know they wanted. The heart and soul of our team excels at an ultra-high level of workmanship and detail. We take pride in conceptualizing, planning and designing all key elements of our events in-house. This allows for unmatched quality control and ensures that the vision stays cohesive. 
+
+            </p>
+        </div>
+    </div><br>
+    <div class="image-text-container">
+        <img src="/img/Aboutcontent-3.jpg" alt="">
+        <div class="content-3">
+            <h3>IMAGINATIVE EVENTS</h3>
+            <br>
+            <p>Our diverse team offers a range of perspectives and experience, which drives innovation. We work tirelessly to ensure no two Eden Springs events are alike by constantly experimenting with new mediums and technologies and striving to create new ideas and fresh designs.These are just a glimpse into the limitless possibilities.With Imaginative Events, your imagination is the only limit.  Let's craft an event that becomes a cherished memory.
+
+            </p>
+        </div>
+    </div> 
+    </div>
+
+    <!-- FOOTER -->
+      <footer class="footer-section">
+        <div class="container">   
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="img/logo.png" class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="social-icon">
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                              </div>
+                          
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="/index.html">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="/booking us page/bookingUS.html">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="/events.html">Our Events</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="/booking us page/bookingUS.html">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button type="submit">Submit</button>
+                                   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <marquee class="marquee" id="dynamicMarquee"></marquee>
+           </div>
+           <div class="end-text">
+            <p>Copyright © @2024. All Rights Reserved.Designed By EdenSpringEvents. </p>
+          </div>
+    </footer>
+
+  
+<script src="/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

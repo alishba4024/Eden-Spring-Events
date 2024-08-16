@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden Spring Events-Event</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kalnia+Glaze:wght@100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Crete+Round:ital@0;1&family=Kalnia+Glaze:wght@100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+ <!-- Bootsrtap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ <!-- icons cdn -->
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+
+<style>
+
+body::-webkit-scrollbar{
+    display: block;
+    width: 8px;
+    background: black;
+   }
+   
+   body::-webkit-scrollbar-thumb{
+       background-color: #800020;
+       border-radius: 50px;
+       cursor: grab;
+   }
+
+body, html{
+    padding: 0;
+    margin: 0;
+    background: white;
+}
+.container{
+    text-align: center;
+    padding: 10px;
+}
+.heading{
+    font-size: 2.75em;
+    margin-bottom: 20px;
+    font-family: "Crete Round", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.card{
+    position: relative;
+    width: calc(30% - 40px);
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.card:hover .overlay{
+    opacity: 1;
+    cursor: pointer;
+}
+.text{
+    color: #fff;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+}
+@media (max-width:768px){
+    .card{
+        width: calc(50% - 40px);
+    }
+    .heading{
+        font-size:2em ;
+    }
+}
+
+@media (max-width:480px){
+    .card{
+        width: calc(100% - 40px);
+    }
+    .heading{
+        font-size:2em ;
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ /* HEADER NAVBAR STYLING */
+
+ header{
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    background: black;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 1s;
+    z-index: 1300;
+    width: 100%;
+    height: 15vh;
+   
+}
+
+.nav{
+    display: flex;
+}
+.nav li {
+ list-style: none;
+ margin: 0 20px;
+}
+.nav li a {
+    color: #f5f5DC;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.nav li a.active{
+    color: #f5f5DC;
+    border:0.2em solid  #f5f5DC ;
+    max-width: 10em;
+    margin: auto auto;
+    padding: 7px;
+}
+
+.sparkle {
+    max-width: 10em; 
+    color: #f5f5DC;
+    margin: auto auto;
+}
+
+.sparkle:hover {
+    cursor: pointer;
+}
+
+.hover-effect {
+    box-sizing: border-box;
+    position: relative;
+    padding: 0.75em;
+}
+
+.hover-effect::before,
+.hover-effect::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+}
+
+.hover-effect::before {
+    border-top: 0.2em solid  #800020;
+    border-bottom: 0.2em solid  #800020;
+    transform: scale3d(0, 1, 1);
+}
+
+.hover-effect::after {
+    border-left: 0.2em solid  #800020;
+    border-right: 0.2em solid  #800020;
+    transform: scale3d(1, 0, 1);
+}
+
+.hover-effect:hover::before,
+.hover-effect:hover::after {
+    transform: scale3d(1, 1, 1);
+    transition: transform 900ms;
+}
+
+/* Header Styling */
+header {
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 1s;
+    z-index: 1300;
+    width: 100%;
+    height: 15vh;
+}
+
+.navbar-toggler {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #f5f5DC;
+    cursor: pointer;
+    display: none; /* Hidden by default, shown on smaller screens */
+}
+
+/* Navigation Menu */
+.nav {
+    display: flex;
+    list-style: none;
+}
+
+.nav li {
+    margin: 0 20px;
+}
+
+.nav li a {
+    color: #f5f5DC;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.nav li a.active {
+    color: #f5f5DC;
+    border: 0.2em solid #800020;
+    max-width: 10em;
+    margin: auto;
+    padding: 7px;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: black;
+        overflow: hidden;
+        height: 0;
+        transition: height 0.3s ease-in-out;
+    }
+   .image-text-container{
+    position: relative; /* or position: sticky; top: 0; */
+   }
+    .nav.active {
+        height: auto;
+        padding: 10px;
+    }
+
+    .nav li {
+        margin: 10px 0;
+    }
+
+    .navbar-toggler {
+        display: block; /* Show the hamburger menu on smaller screens */
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- header -->
+    <header>
+        <a href="/index.html"><img src="img/logo.png" width="200px" class="logo" alt=""></a>
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav">
+            <li><a class="nav-btn sparkle hover-effect" href="/index.html">Home</a></li>
+            <li><a class="nav-btn sparkle hover-effect" href="/aboutus.html">About</a></li>
+            <li><a class="nav-btn  active" href="#">Events</a></li>
+            <li><a class="nav-btn sparkle hover-effect" href="#">Services</a></li>
+            <li><a class="nav-btn sparkle hover-effect" href="/bookingUS.html">Booking us</a></li>
+        </ul>
+    </header>
+
+<!-- event page -->
+ <br><br><br><br>
+    <div class="container">
+       <h1 class="heading">Our Amazing Events</h1>
+       <div class="card-container">
+         <div class="card">
+            <img src="/images/img1.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Corporate Wellness Day</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img2.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Wedding Bell Bash</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img3.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Parties</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img4.PNG" alt="">
+            <div class="overlay">
+                <div class="text">BBQ Bonanza</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img5.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Outdoor Concert</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img9.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Beach Bash</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img7.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Birthday Bash</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img8.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Splash into Summer</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img6.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Outdoor Oasis</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img10.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Brew and View</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img11.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Spring Bloom Festival</div>
+            </div>
+         </div>
+
+         <div class="card">
+            <img src="/images/img12.PNG" alt="">
+            <div class="overlay">
+                <div class="text">Cocktail Party</div>
+            </div>
+         </div>
+       </div>
+    </div>
+   
+<!-- FOOTER -->
+
+
+<script src="/main.js"></script>
+      <!-- BOOTSTRAP JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
